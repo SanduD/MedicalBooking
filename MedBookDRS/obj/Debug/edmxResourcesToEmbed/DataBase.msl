@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Med_DrsModelStoreContainer" CdmEntityContainer="Med_DrsEntities">
+    <EntitySetMapping Name="Doctoris">
+      <EntityTypeMapping TypeName="Med_DrsModel.Doctori">
+        <MappingFragment StoreEntitySet="Doctori">
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="DataNastere" ColumnName="DataNastere" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pacientis">
+      <EntityTypeMapping TypeName="Med_DrsModel.Pacienti">
+        <MappingFragment StoreEntitySet="Pacienti">
+          <ScalarProperty Name="IdPacient" ColumnName="IdPacient" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="DataNastere" ColumnName="DataNastere" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programari_Pacienti">
+      <EntityTypeMapping TypeName="Med_DrsModel.Programari_Pacienti">
+        <MappingFragment StoreEntitySet="Programari_Pacienti">
+          <ScalarProperty Name="IdProgramare" ColumnName="IdProgramare" />
+          <ScalarProperty Name="IdSpecializare" ColumnName="IdSpecializare" />
+          <ScalarProperty Name="IdPacient" ColumnName="IdPacient" />
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="DataProgramare" ColumnName="DataProgramare" />
+          <ScalarProperty Name="OraProgramare" ColumnName="OraProgramare" />
+          <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+          <ScalarProperty Name="PretTotal" ColumnName="PretTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiciiMedicales">
+      <EntityTypeMapping TypeName="Med_DrsModel.ServiciiMedicale">
+        <MappingFragment StoreEntitySet="ServiciiMedicale">
+          <ScalarProperty Name="IdServiciu" ColumnName="IdServiciu" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+          <ScalarProperty Name="Pret" ColumnName="Pret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specializaris">
+      <EntityTypeMapping TypeName="Med_DrsModel.Specializari">
+        <MappingFragment StoreEntitySet="Specializari">
+          <ScalarProperty Name="IdSpecializare" ColumnName="IdSpecializare" />
+          <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+          <ScalarProperty Name="Studii" ColumnName="Studii" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecializariDoctoris">
+      <EntityTypeMapping TypeName="Med_DrsModel.SpecializariDoctori">
+        <MappingFragment StoreEntitySet="SpecializariDoctori">
+          <ScalarProperty Name="IdSD" ColumnName="IdSD" />
+          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+          <ScalarProperty Name="IdSpecializare" ColumnName="IdSpecializare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

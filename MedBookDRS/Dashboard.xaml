@@ -1,0 +1,207 @@
+﻿<Window x:Class="MedBookDRS.Dashboard"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedBookDRS"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Background="Transparent"
+        Title="RegisterWindow"
+        AllowsTransparency="True"
+        Height="720"
+        Width="1000">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="25 0 0 25">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,1"
+                                     EndPoint="0,0">
+                    <GradientStop Color="#074F57"
+                                  Offset="1" />
+                    <GradientStop Color="#E4C5AF"
+                                  Offset="0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Width="auto"
+                            Height="auto">
+                    <materialDesign:PackIcon x:Name="img_User"
+                                             Width="50"
+                                             Height="50"
+                                             HorizontalAlignment="Center"
+                                             Kind="Account" />
+                    <TextBlock x:Name="txt_Username"
+                               FontSize="26"
+                               FontFamily="Sans-Serif"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Center"
+                               Foreground="#E4C5AF"
+                               FontWeight="Bold"
+                               Text="Username"
+                               Margin="0 10" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="20 30">
+
+                    <RadioButton x:Name="Rbtn1"
+                                 HorizontalAlignment="Left"
+                                 Checked="Rbtn1_Checked"
+                                 Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                                 Margin="6"
+                                 Content="Acasa"
+                                 Foreground="#E4C5AF"
+                                 FontWeight="Bold"
+                                 FontSize="20" />
+                    <RadioButton x:Name="Btn_FaProgramare"
+                                 Visibility="Collapsed"
+                                 HorizontalAlignment="Left"
+                                 Checked="Btn_FaProgramare_Checked"
+                                 Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                                 Margin="6"
+                                 Foreground="#E4C5AF"
+                                 FontWeight="Bold"
+                                 Width="auto"
+                                 FontSize="20"
+                                 ContentStringFormat="{}{0,-20}">
+                        <TextBlock Text="Programeaza o consultatie!"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
+                        
+                       
+
+                        </RadioButton>
+                    <RadioButton x:Name="Btn_ProgramariDoctor"
+                                 HorizontalAlignment="Left"
+                                 Visibility="Collapsed"
+                                 Checked="Btn_RezolvaProgramari"
+                                 Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                                 Margin="6"
+                                 Foreground="#E4C5AF"
+                                 FontWeight="Bold"
+                                 Width="auto"
+                                 FontSize="20"
+                                 ContentStringFormat="{}{0,-20}">
+                        <TextBlock Text="Programari"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
+                    </RadioButton>
+                    <RadioButton x:Name="Btn_IstoricPacient"
+                                 HorizontalAlignment="Left"
+                                 
+                                 Checked="Rbtn3_Checked"
+                                 Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                                 Margin="6"
+                                 Foreground="#E4C5AF"
+                                 Visibility="Collapsed"
+                                 FontWeight="Bold"
+                                 FontSize="20">
+                        <TextBlock 
+                                   Text="Programarile mele"
+                                   
+                                   TextWrapping="NoWrap"
+                                   TextAlignment="Left"/>
+                        
+                    </RadioButton>
+                    
+                    <RadioButton x:Name="Btn_IstoricDoctor"
+                                 HorizontalAlignment="Left"
+                                 Checked="Rbtn3_Checked"
+                                 Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                                 Margin="6"
+                                 Foreground="#E4C5AF"
+                                 Visibility="Collapsed"
+                                 FontWeight="Bold"
+                                 FontSize="20">
+                        <TextBlock Text="Istoric Pacient"
+                                   TextWrapping="NoWrap"
+                                   TextAlignment="Left" />
+
+                    </RadioButton>
+
+                </StackPanel>
+
+                <Image Grid.Row="2"
+                       Source="/Images/_LOGO.png"
+                       Width="175"
+                       Height="175"
+                       Margin="0 0 0 50"></Image>
+
+                <Button Grid.Row="2"
+                        x:Name="Btn_LogOut"
+                        VerticalAlignment="Bottom"
+                        Margin="0 0 0 20"
+                        Width="80"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        Content="LogOut"
+                        FontWeight="Bold"
+                        Foreground="#077187"
+                        BorderBrush="#077187"
+                        BorderThickness="3"
+                        Click="Btn_LogOut_Click"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+            </Grid>
+
+
+
+        </Border>
+
+
+
+
+        <Border Grid.Column="1"
+                Padding="10"
+                Background="AntiqueWhite"
+                CornerRadius="0 25 25 0"
+                MouseDown="Border_MouseDown">
+
+            <Grid>
+
+                <ContentControl x:Name="CC"
+                                Grid.Column="1"
+                                Grid.Row="1" />
+                <StackPanel VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            FlowDirection="RightToLeft">
+
+                    <Image Source="/Images/close.png"
+                           Margin="0 0 10 0"
+                           MouseDown="CloseBtn_Dash"
+                           Style="{StaticResource imgClose}" />
+                    <Image Source="/Images/minimize.png"
+                           Margin="0 5 0 0"
+                           Width="25"
+                           MouseDown="MiniminizeBtn_Dash"
+                           Style="{StaticResource imgClose}" />
+
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+
+
+
+    </Grid>
+</Window>

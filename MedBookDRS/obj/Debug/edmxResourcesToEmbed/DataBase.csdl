@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Med_DrsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Doctori">
+    <Key>
+      <PropertyRef Name="IdDoctor" />
+    </Key>
+    <Property Name="IdDoctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sex" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataNastere" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Programari_Pacienti" Relationship="Self.FK__Programar__IdDoc__36B12243" FromRole="Doctori" ToRole="Programari_Pacienti" />
+    <NavigationProperty Name="SpecializariDoctoris" Relationship="Self.FK__Specializ__IdDoc__3C69FB99" FromRole="Doctori" ToRole="SpecializariDoctori" />
+  </EntityType>
+  <EntityType Name="Pacienti">
+    <Key>
+      <PropertyRef Name="IdPacient" />
+    </Key>
+    <Property Name="IdPacient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sex" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataNastere" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Programari_Pacienti" Relationship="Self.FK__Programar__IdPac__35BCFE0A" FromRole="Pacienti" ToRole="Programari_Pacienti" />
+  </EntityType>
+  <EntityType Name="Programari_Pacienti">
+    <Key>
+      <PropertyRef Name="IdProgramare" />
+    </Key>
+    <Property Name="IdProgramare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSpecializare" Type="Int32" Nullable="false" />
+    <Property Name="IdPacient" Type="Int32" Nullable="false" />
+    <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+    <Property Name="DataProgramare" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OraProgramare" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Descriere" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PretTotal" Type="Double" />
+    <NavigationProperty Name="Doctori" Relationship="Self.FK__Programar__IdDoc__36B12243" FromRole="Programari_Pacienti" ToRole="Doctori" />
+    <NavigationProperty Name="Pacienti" Relationship="Self.FK__Programar__IdPac__35BCFE0A" FromRole="Programari_Pacienti" ToRole="Pacienti" />
+    <NavigationProperty Name="Specializari" Relationship="Self.FK__Programar__IdSpe__34C8D9D1" FromRole="Programari_Pacienti" ToRole="Specializari" />
+  </EntityType>
+  <EntityType Name="ServiciiMedicale">
+    <Key>
+      <PropertyRef Name="IdServiciu" />
+    </Key>
+    <Property Name="IdServiciu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Denumire" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pret" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Specializari">
+    <Key>
+      <PropertyRef Name="IdSpecializare" />
+    </Key>
+    <Property Name="IdSpecializare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Denumire" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Studii" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Programari_Pacienti" Relationship="Self.FK__Programar__IdSpe__34C8D9D1" FromRole="Specializari" ToRole="Programari_Pacienti" />
+    <NavigationProperty Name="SpecializariDoctoris" Relationship="Self.FK__Specializ__IdSpe__3D5E1FD2" FromRole="Specializari" ToRole="SpecializariDoctori" />
+  </EntityType>
+  <EntityType Name="SpecializariDoctori">
+    <Key>
+      <PropertyRef Name="IdSD" />
+    </Key>
+    <Property Name="IdSD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+    <Property Name="IdSpecializare" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Doctori" Relationship="Self.FK__Specializ__IdDoc__3C69FB99" FromRole="SpecializariDoctori" ToRole="Doctori" />
+    <NavigationProperty Name="Specializari" Relationship="Self.FK__Specializ__IdSpe__3D5E1FD2" FromRole="SpecializariDoctori" ToRole="Specializari" />
+  </EntityType>
+  <Association Name="FK__Programar__IdDoc__36B12243">
+    <End Role="Doctori" Type="Self.Doctori" Multiplicity="1" />
+    <End Role="Programari_Pacienti" Type="Self.Programari_Pacienti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctori">
+        <PropertyRef Name="IdDoctor" />
+      </Principal>
+      <Dependent Role="Programari_Pacienti">
+        <PropertyRef Name="IdDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Specializ__IdDoc__3C69FB99">
+    <End Role="Doctori" Type="Self.Doctori" Multiplicity="1" />
+    <End Role="SpecializariDoctori" Type="Self.SpecializariDoctori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctori">
+        <PropertyRef Name="IdDoctor" />
+      </Principal>
+      <Dependent Role="SpecializariDoctori">
+        <PropertyRef Name="IdDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Programar__IdPac__35BCFE0A">
+    <End Role="Pacienti" Type="Self.Pacienti" Multiplicity="1" />
+    <End Role="Programari_Pacienti" Type="Self.Programari_Pacienti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacienti">
+        <PropertyRef Name="IdPacient" />
+      </Principal>
+      <Dependent Role="Programari_Pacienti">
+        <PropertyRef Name="IdPacient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Programar__IdSpe__34C8D9D1">
+    <End Role="Specializari" Type="Self.Specializari" Multiplicity="1" />
+    <End Role="Programari_Pacienti" Type="Self.Programari_Pacienti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specializari">
+        <PropertyRef Name="IdSpecializare" />
+      </Principal>
+      <Dependent Role="Programari_Pacienti">
+        <PropertyRef Name="IdSpecializare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Specializ__IdSpe__3D5E1FD2">
+    <End Role="Specializari" Type="Self.Specializari" Multiplicity="1" />
+    <End Role="SpecializariDoctori" Type="Self.SpecializariDoctori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specializari">
+        <PropertyRef Name="IdSpecializare" />
+      </Principal>
+      <Dependent Role="SpecializariDoctori">
+        <PropertyRef Name="IdSpecializare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Med_DrsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Doctoris" EntityType="Self.Doctori" />
+    <EntitySet Name="Pacientis" EntityType="Self.Pacienti" />
+    <EntitySet Name="Programari_Pacienti" EntityType="Self.Programari_Pacienti" />
+    <EntitySet Name="ServiciiMedicales" EntityType="Self.ServiciiMedicale" />
+    <EntitySet Name="Specializaris" EntityType="Self.Specializari" />
+    <EntitySet Name="SpecializariDoctoris" EntityType="Self.SpecializariDoctori" />
+    <AssociationSet Name="FK__Programar__IdDoc__36B12243" Association="Self.FK__Programar__IdDoc__36B12243">
+      <End Role="Doctori" EntitySet="Doctoris" />
+      <End Role="Programari_Pacienti" EntitySet="Programari_Pacienti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Specializ__IdDoc__3C69FB99" Association="Self.FK__Specializ__IdDoc__3C69FB99">
+      <End Role="Doctori" EntitySet="Doctoris" />
+      <End Role="SpecializariDoctori" EntitySet="SpecializariDoctoris" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Programar__IdPac__35BCFE0A" Association="Self.FK__Programar__IdPac__35BCFE0A">
+      <End Role="Pacienti" EntitySet="Pacientis" />
+      <End Role="Programari_Pacienti" EntitySet="Programari_Pacienti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Programar__IdSpe__34C8D9D1" Association="Self.FK__Programar__IdSpe__34C8D9D1">
+      <End Role="Specializari" EntitySet="Specializaris" />
+      <End Role="Programari_Pacienti" EntitySet="Programari_Pacienti" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Specializ__IdSpe__3D5E1FD2" Association="Self.FK__Specializ__IdSpe__3D5E1FD2">
+      <End Role="Specializari" EntitySet="Specializaris" />
+      <End Role="SpecializariDoctori" EntitySet="SpecializariDoctoris" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

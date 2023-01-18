@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dccdb8ce8e0748b3879c948bb7527ad1" Name="Diagram1" ZoomLevel="115">
+        <EntityTypeShape EntityType="Med_DrsModel.Doctori" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Med_DrsModel.Pacienti" Width="1.5" PointX="6.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Med_DrsModel.Programari_Pacienti" Width="1.5" PointX="4.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Med_DrsModel.ServiciiMedicale" Width="1.5" PointX="2.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Med_DrsModel.Specializari" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Med_DrsModel.SpecializariDoctori" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Med_DrsModel.FK__Programar__IdDoc__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="Med_DrsModel.FK__Specializ__IdDoc__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Med_DrsModel.FK__Programar__IdPac__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="Med_DrsModel.FK__Programar__IdSpe__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Med_DrsModel.FK__Specializ__IdSpe__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

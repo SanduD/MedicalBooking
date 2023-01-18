@@ -1,0 +1,199 @@
+﻿<Window x:Class="MedBookDRS.LoginWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedBookDRS"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Height="720"
+        Width="1000">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1">
+
+        </StackPanel>
+
+
+
+        <Border CornerRadius="10 0 0 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#074F57"
+                                  Offset="1" />
+                    <GradientStop Color="#E4C5AF"
+                                  Offset="0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Canvas>
+                    <Polygon Points="0,20 230,140 0,270"
+                             Fill="#4EB1B6" />
+                    <Polygon Points="100,400 200,370 180,470"
+                             Fill="#4EB1B6"
+                             Canvas.Left="-10"
+                             Canvas.Top="90" />
+                    <Ellipse Width="40"
+                             Height="40"
+                             Fill="#4EB1B6"
+                             Canvas.Left="253"
+                             Canvas.Top="562" />
+                    <Ellipse Margin="50 400 0 0"
+                             Width="20"
+                             Height="20"
+                             Fill="#4EB1B6" />
+                </Canvas>
+
+                <StackPanel Height="135"
+                            VerticalAlignment="Top">
+                    <Image Source="/Images/_LOGO.png"
+                           Width="160" />
+
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Accesati butonul de mai jos pentru a va crea un cont nou de utilizator!"
+                               Opacity="0.8"
+                               Margin="20 30 20 30"
+                               Style="{StaticResource NormalText}" />
+                    <Button Content="Sign Up"
+                            Style="{StaticResource button}"
+                            Click="SignUp_Btn" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Background="White"
+                Grid.Column="1"
+                CornerRadius="0 10 10 0"
+                MouseDown="Border_MouseDown">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            FlowDirection="RightToLeft">
+
+                    <Image Source="/Images/close.png"
+                           Margin="0 0 10 0"
+                           MouseDown="CloseBtn_Login"
+                           Style="{StaticResource imgClose}" />
+                    <Image Source="/Images/minimize.png"
+                           Margin="0 5 0 0"
+                           Width="25"
+                           MouseDown="MiniminizeBtn_Login"
+                           Style="{StaticResource imgClose}" />
+
+
+                </StackPanel>
+                <StackPanel Grid.Row="1"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Sign in to App"
+                               Foreground="#3AB19B"
+                               Style="{StaticResource TitleText}" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0 20"
+                                HorizontalAlignment="Center" />
+
+
+                    <ComboBox x:Name="Cmb_Utilizator"
+                              Style="{StaticResource MaterialDesignFilledComboBox}"
+                              materialDesign:HintAssist.Hint="Tip Utilizator"
+                              IsEditable="True"
+                              VerticalAlignment="Center"
+                              materialDesign:TextFieldAssist.HasClearButton="True"
+                              Width="150"
+                              Height="50"
+                              FontSize="14"
+                              Foreground="#074F57"
+                              FontWeight="SemiBold">
+                        <ComboBox.SelectedItem>
+                            <Binding Path="SelectedValidationFilled"
+                                     Mode="TwoWay"
+                                     UpdateSourceTrigger="PropertyChanged">
+
+                            </Binding>
+                            
+                        </ComboBox.SelectedItem>
+                    </ComboBox>
+
+
+                    <TextBlock Margin="0 10 0 15"
+                               Foreground="#878787"
+                               Style="{StaticResource NormalText}"
+                               Text="Introduceti datele de autentificare:" />
+
+
+                    <Border BorderBrush="#ACB0AF"
+                            BorderThickness="1"
+                            Margin="70 7"
+                            CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="/Images/Email.png"
+                                   Height="20" />
+                            <TextBlock x:Name="textEmail"
+                                       MouseDown="textEmail_MouseDown"
+                                       Text="Email"
+                                       Style="{StaticResource textHint}" />
+                            <TextBox Name="txtEmail"
+                                     TextChanged="txtEmail_TextChanged"
+                                     Style="{StaticResource textBox}"
+                                     Text="Email" />
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="#ACB0AF"
+                            BorderThickness="1"
+                            Margin="70 7"
+                            CornerRadius="5">
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="/Images/Lock.png"
+                                   Height="20" />
+                            <TextBlock x:Name="textPassword"
+                                       MouseDown="textPassword_MouseDown"
+                                       Text="Password"
+                                       Style="{StaticResource textHint}" />
+                            <PasswordBox x:Name="passwordBox"
+                                         PasswordChanged="PasswordBox_PasswordChanged"
+                                         Style="{StaticResource textBox}"
+                                         Password="Password" />
+                        </Grid>
+                    </Border>
+
+                    <Button Content="Sign In"
+                            Click="SignIn_Btn"
+                            Style="{StaticResource mainButton}" />
+                </StackPanel>
+            </Grid>
+
+
+        </Border>
+
+    </Grid>
+</Window>
